@@ -60,7 +60,10 @@
           </a>
         </li>
         <li><a>Configuración</a></li>
-        <li><a class="text-error">Cerrar Sesión</a></li>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <li><button type="submit" class="text-error">Cerrar Sesión</></li>
+        </form>
       </ul>
     </div>
   </div>

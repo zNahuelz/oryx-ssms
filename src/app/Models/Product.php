@@ -20,7 +20,9 @@ class Product extends Model
         'sell_price',
         'stock',
         'stock_min',
-        'visible'
+        'visible',
+        'presentation_id',
+        'supplier_id',
     ];
 
     public function presentation(): BelongsTo

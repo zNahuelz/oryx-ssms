@@ -8,6 +8,13 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('denyUsers')->name('login');
 
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout');
+
 Route::get('/exlibris', function () {
     return view('layouts.dashboard');
 })->name('libris');

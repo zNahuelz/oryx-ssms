@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    @livewireScripts
     <div class="drawer lg:drawer-open min-h-screen bg-base-100">
         <!-- Hidden checkbox for mobile toggle -->
         <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
@@ -29,7 +30,6 @@
             </main>
         </div>
     </div>
-    @livewireScripts
 </body>
 
 </html>
