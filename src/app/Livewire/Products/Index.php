@@ -20,9 +20,29 @@ class Index extends Component
 
     public $searchModes = ['name' => 'Por Nombre', 'barcode' => 'Por Código de Barras', 'description' => 'Por Descripción'];
 
+    protected $listeners = [
+        'deleteProduct' => 'deleteProduct'
+    ];
+
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::withTrashed()->find($id);
+        if ($product->deleted_at) {
+            $product->restore();
+            session()->flash('message', "Producto: {$product->name} restaurado correctamente.");
+            session()->flash('alert-type', 'success');
+            return redirect()->route('products.index');
+        } else {
+            $product->delete();
+            session()->flash('message', "Producto: {$product->name} eliminado correctamente.");
+            session()->flash('alert-type', 'success');
+            return redirect()->route('products.index');
+        }
     }
 
     public function sortBy($field)

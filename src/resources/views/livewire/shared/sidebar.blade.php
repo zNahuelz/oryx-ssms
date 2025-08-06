@@ -36,7 +36,7 @@
             <span class="font-medium">Productos</span>
           </summary>
           <ul class="ml-6 mt-2 space-y-1">
-            <li><a href="#" class="block px-3 py-1 rounded hover:bg-primary/50">Nuevo</a></li>
+            <li><a href="{{ route('products.create') }}" class="block px-3 py-1 rounded hover:bg-primary/50">Nuevo</a></li>
             <li><a href="{{ route('products.index') }}" class="block px-3 py-1 rounded hover:bg-primary/50">Listado</a></li>
           </ul>
         </details>

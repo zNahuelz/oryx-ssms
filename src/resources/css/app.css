@@ -9,45 +9,33 @@
 @plugin "daisyui/theme" {
     name: "onyx";
     default: true;
-
-    /* ✅ Base background colors (light) */
-    --color-base-100: oklch(98% 0.003 247.858); /* almost white */
-    --color-base-200: oklch(96% 0.007 247.896); /* very light gray */
-    --color-base-300: oklch(92% 0.013 255.508); /* light gray */
-    --color-base-content: oklch(20% 0.042 265.755); /* dark text on light bg */
-
-    /* ✅ Primary color */
-    --color-primary: oklch(37% 0.146 265.522); /* a medium blue */
-    --color-primary-content: oklch(97% 0.014 254.604); /* white-ish text */
-
-    /* ✅ Secondary / accent colors */
-    --color-secondary: oklch(79% 0.184 86.047);
-    --color-secondary-content: oklch(20% 0.05 86.047);
-    --color-accent: oklch(53% 0.157 131.589);
-    --color-accent-content: oklch(98% 0.031 120.757);
-
-    /* ✅ Neutral background should also be LIGHT now */
-    --color-neutral: oklch(95% 0.01 247.896); /* light neutral */
-    --color-neutral-content: oklch(20% 0.042 265.755); /* dark text */
-
-    /* ✅ Status colors (keep same as before) */
-    --color-info: oklch(70% 0.165 254.624);
-    --color-info-content: oklch(20% 0.042 265.755);
-    --color-success: oklch(76% 0.233 130.85);
-    --color-success-content: oklch(20% 0.042 130.85);
-    --color-warning: oklch(75% 0.183 55.934);
-    --color-warning-content: oklch(20% 0.042 55.934);
-    --color-error: oklch(45% 0.188 13.697);
-    --color-error-content: oklch(98% 0.001 106.423);
-
-    /* ✅ Roundedness + borders */
-    --radius-selector: 0.5rem;
-    --radius-field: 0.25rem;
-    --radius-box: 0rem;
-    --size-selector: 0.25rem;
-    --size-field: 0.25rem;
-    --border: 1px;
-    --depth: 1;
-    --noise: 1;
+  --color-base-100: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(96% 0.007 247.896);
+  --color-base-300: oklch(92% 0.013 255.508);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: oklch(37% 0.146 265.522);
+  --color-primary-content: oklch(97% 0.014 254.604);
+  --color-secondary: #6c757d;
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: #343a40;
+  --color-accent-content: oklch(98% 0.031 120.757);
+  --color-neutral: oklch(21% 0.006 285.885);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: #17a2b8;
+  --color-info-content: oklch(97% 0.013 236.62);
+  --color-success: #28a745;
+  --color-success-content: oklch(98% 0.031 120.757);
+  --color-warning: #ffc107;
+  --color-warning-content: oklch(98% 0.016 73.684);
+  --color-error: #dc3545;
+  --color-error-content: oklch(98% 0.001 106.423);
+  --radius-selector: 2rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1.5px;
+  --depth: 1;
+  --noise: 1;
 }
 @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";

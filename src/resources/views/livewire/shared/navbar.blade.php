@@ -19,7 +19,7 @@
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
         <div class="indicator">
           <i class="bi bi-bell h-5 w-5"></i>
-          <span class="badge badge-sm indicator-item badge-secondary">3</span>
+          <span class="badge badge-sm indicator-item badge-primary">3</span>
         </div>
       </div>
       <div tabindex="0" class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-80 shadow-lg">
@@ -62,7 +62,8 @@
         <li><a>Configuración</a></li>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <li><button type="submit" class="text-error">Cerrar Sesión</></li>
+          <li><button type="submit" class="text-error">Cerrar Sesión</>
+          </li>
         </form>
       </ul>
     </div>

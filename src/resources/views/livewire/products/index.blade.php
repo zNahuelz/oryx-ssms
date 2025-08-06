@@ -6,7 +6,7 @@
                 wire:model.lazy="search"
                 placeholder="Buscar productos..."
                 class="input input-bordered w-full sm:w-64 me-2" />
-                            <select wire:model="searchMode" class="select select-bordered w-full">
+            <select wire:model="searchMode" class="select select-bordered w-full">
                 @foreach ($searchModes as $key => $label)
                 <option value="{{ $key }}">{{ $label }}</option>
                 @endforeach
@@ -17,11 +17,11 @@
             <a class="btn btn-primary w-full sm:w-auto" href="{{ route('products.index') }}">Recargar</a>
         </div>
     </div>
-
     <div class="overflow-auto">
         <table class="table w-full">
             <thead>
                 <tr class="text-black">
+                    <th>#</th>
                     <th wire:click="sortBy('name')" class="cursor-pointer">
                         Nombre
                         @if($sortField === 'name')
@@ -47,7 +47,8 @@
             </thead>
             <tbody>
                 @forelse($products as $product)
-                <tr class="hover:bg-info/10">
+                <tr class="hover:bg-primary/15">
+                    <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td class="text-end">S./ {{ $product->buy_price }}</td>
                     <td class="text-center">{{ $product->stock }}</td>
@@ -56,12 +57,13 @@
                         <strong class="{{ $product->deleted_at ? 'text-red-800' : 'text-green-800' }}">
                             {{ $product->deleted_at ? 'Eliminado' : 'Disponible' }}
                         </strong>
-                    </td></td>
+                    </td>
+                    </td>
                     <td class="text-center">
                         <div class="join">
-                            <a href="#" class="join-item btn btn-sm btn-primary">Editar</a>
-                            <a href="#" class="join-item btn btn-sm btn-secondary">Detalles</a>
-                            <button class="join-item btn btn-sm btn-error">Eliminar</button>
+                            <a href="#" class="join-item btn btn-sm btn-success">Editar</a>
+                            <a href="{{ route('products.detail',['id' => $product->id]) }}" class="join-item btn btn-sm btn-primary">Detalles</a>
+                            <button class="join-item btn btn-sm {{ $product->deleted_at ? 'btn-info' : 'btn-error' }}" onclick="confirmDelete({{ $product->id }}, '{{ $product->name }}', '{{ $product->deleted_at ? 'restaurar' : 'eliminar' }}')">{{ $product->deleted_at ? 'Restaurar' : 'Eliminar' }}</button>
                         </div>
                     </td>
                 </tr>
@@ -83,7 +85,27 @@
             </select>
         </div>
         <div class="w-full sm:w-auto mt-4 sm:mt-0">{{ $products->links('components.pagination') }}</div>
-
     </div>
 </div>
+
+@push('js')
+<script>
+    function confirmDelete(id, productName, actionName) {
+        Swal.fire({
+            title: 'Confirmar acción',
+            html: `¿Está seguro de <strong>${actionName}</strong> el siguiente producto?<br><strong>${productName}</strong>`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: actionName.toUpperCase(),
+            cancelButtonText: 'CANCELAR',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.Livewire.dispatch('deleteProduct', {
+                    id: id
+                });
+            }
+        });
+    }
+</script>
+@endpush
 </div>
